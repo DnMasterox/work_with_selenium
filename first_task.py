@@ -25,11 +25,12 @@ class TestAddingToCommentsList(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="main"]/div/div[5]/form/table/thead/tr/th[2]/a').click()
         list_el = self.driver.find_element_by_class_name("webgrid-footer")
         list_a = list_el.find_elements_by_tag_name("a")
-        href = list()
+        href = set()
         for link_a in list_a:
-            href.append(link_a.get_attribute("href"))
+            href.add(link_a.get_attribute("href"))
 
         for ref in href:
+            print(ref)
             self.driver.get(ref)
 
         # arr_webgrid_row_style = self.driver.find_elements_by_class_name("webgrid-row-style")
