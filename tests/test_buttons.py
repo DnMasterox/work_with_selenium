@@ -2,7 +2,6 @@ import os
 import unittest
 
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 from app_logics.find_in_comments_list import FindInCommentsList
 from app_logics.preparing_for_buttons_tests import \
     prepare_new_button_for_first_test, \
@@ -22,6 +21,9 @@ class TestButtons(unittest.TestCase):
             executable_path=os.path.join(os.path.dirname(
                 __file__), '..', 'drivers', 'chromedriver.exe'))
         self.driver.get("http://commentssprintone.azurewebsites.net")
+
+    def tearDown(self):
+        self.driver.quit()
 
     def test_new_button_first(self):
         driver = self.driver
@@ -49,7 +51,7 @@ class TestButtons(unittest.TestCase):
         driver = self.driver
         prepare_edit_button_for_test(driver, self.test_comment_four)
         find_result = FindInCommentsList(self.driver)
-        self.assertNotIn(self.test_comment_four,
+        self.assertIn(self.test_comment_four,
                       find_result.search_in_list_by_comment())
 
     def test_delete_button(self):
@@ -59,9 +61,6 @@ class TestButtons(unittest.TestCase):
         find_result = FindInCommentsList(driver)
         self.assertNotIn(self.test_comment_five,
                          find_result.search_in_list_by_comment())
-
-    def tearDown(self):
-        self.driver.quit()
 
     if __name__ == '__main__':
         unittest.main()
