@@ -26,39 +26,34 @@ class TestButtons(unittest.TestCase):
         self.driver.quit()
 
     def test_new_button_first(self):
-        driver = self.driver
-        prepare_new_button_for_first_test(driver, self.test_comment_one,
+        prepare_new_button_for_first_test(self.driver, self.test_comment_one,
                                           self.number_for_test_comment_one)
-        find_result = FindInCommentsList(driver)
+        find_result = FindInCommentsList(self.driver)
         self.assertIn(self.number_for_test_comment_one,
                       find_result.search_in_list_by_number())
 
     def test_new_button_second(self):
-        driver = self.driver
-        prepare_new_button_for_second_test(driver, self.test_comment_two)
-        find_result = FindInCommentsList(driver)
+        prepare_new_button_for_second_test(self.driver, self.test_comment_two)
+        find_result = FindInCommentsList(self.driver)
         self.assertIn(self.test_comment_two,
                       find_result.search_in_list_by_comment())
 
     def test_duplicate_button(self):
-        driver = self.driver
-        prepare_duplicate_button_for_test(driver, self.test_comment_three)
-        find_result = FindInCommentsList(driver)
+        prepare_duplicate_button_for_test(self.driver, self.test_comment_three)
+        find_result = FindInCommentsList(self.driver)
         self.assertIn(self.test_comment_three,
                       find_result.search_in_list_by_comment())
 
     def test_edit_button(self):
-        driver = self.driver
-        prepare_edit_button_for_test(driver, self.test_comment_four)
+        prepare_edit_button_for_test(self.driver, self.test_comment_four)
         find_result = FindInCommentsList(self.driver)
         self.assertIn(self.test_comment_four,
                       find_result.search_in_list_by_comment())
 
     def test_delete_button(self):
-        driver = self.driver
-        prepare_new_button_for_second_test(driver, self.test_comment_five)
-        prepare_delete_button_for_tests(driver)
-        find_result = FindInCommentsList(driver)
+        prepare_new_button_for_second_test(self.driver, self.test_comment_five)
+        prepare_delete_button_for_tests(self.driver)
+        find_result = FindInCommentsList(self.driver)
         self.assertNotIn(self.test_comment_five,
                          find_result.search_in_list_by_comment())
 

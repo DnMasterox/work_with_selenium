@@ -25,20 +25,20 @@ def prepare_new_button_for_first_test(driver, text_comment,
 
     """
 
-    push_the_button_new = driver.find_element_by_id("newbutton")
-    push_the_button_new.click()
-    new_comment_text_add = driver.find_element_by_id("Text")
-    new_comment_text_add.send_keys(text_comment)
-    new_comment_number_add = driver.find_element_by_id("Number")
-    new_comment_number_add.send_keys(number_comment)
-    add_all_categories = driver.find_element_by_name("AllSelect")
-    add_all_categories.send_keys(Keys.ENTER)
-    save_button = driver.find_element_by_xpath(
+    button_new = driver.find_element_by_id("newbutton")
+    button_new.click()
+    comment_field = driver.find_element_by_id("Text")
+    comment_field.send_keys(text_comment)
+    number_field = driver.find_element_by_id("Number")
+    number_field.send_keys(number_comment)
+    button_all_categories = driver.find_element_by_name("AllSelect")
+    button_all_categories.click()
+    button_save = driver.find_element_by_xpath(
         '//*[@id="editor-navigation"]/input[%d]' % SAVE_BUTTON_INDEX)
-    save_button.click()
-    return_button = driver.find_element_by_xpath(
+    button_save.click()
+    button_return = driver.find_element_by_xpath(
         '//*[@id="logindisplay"]/a')
-    return_button.click()
+    button_return.click()
 
 
 def prepare_new_button_for_second_test(driver, text_comment) -> None:
@@ -53,16 +53,16 @@ def prepare_new_button_for_second_test(driver, text_comment) -> None:
 
     """
 
-    push_the_button_new = driver.find_element_by_id("newbutton")
-    push_the_button_new.click()
-    make_new_comment = driver.find_element_by_id("Text")
-    make_new_comment.send_keys(text_comment)
-    add_all_categories = driver.find_element_by_name("AllSelect")
-    add_all_categories.send_keys(Keys.ENTER)
-    save_and_return_button = driver.find_element_by_xpath(
+    button_new = driver.find_element_by_id("newbutton")
+    button_new.click()
+    comment_field = driver.find_element_by_id("Text")
+    comment_field.send_keys(text_comment)
+    button_all_categories = driver.find_element_by_name("AllSelect")
+    button_all_categories.click()
+    button_save_and_return = driver.find_element_by_xpath(
         '//*[@id="editor-navigation"]/input[%d]'
         % SAVE_N_RETURN_BUTTON_INDEX)
-    save_and_return_button.click()
+    button_save_and_return.click()
 
 
 def prepare_duplicate_button_for_test(driver, text_comment) -> None:
