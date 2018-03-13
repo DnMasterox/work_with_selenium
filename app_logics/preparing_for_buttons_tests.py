@@ -12,8 +12,8 @@ SAVE_N_RETURN_BUTTON_INDEX = 2
 INDEX_TO_SWITCH_BETWEEN_PAGES = 5
 
 
-def prepare_new_button_for_first_test(driver, text_comment,
-                                      number_comment) -> None:
+def create_new_comment_save(driver, text_comment,
+                            number_comment) -> None:
     """
     Click the "Save" button when typing less than 50 characters in the
        "Comment Text" field, also adding a number to the "Number"
@@ -41,7 +41,7 @@ def prepare_new_button_for_first_test(driver, text_comment,
     button_return.click()
 
 
-def prepare_new_button_for_second_test(driver, text_comment) -> None:
+def create_new_comment_save_return(driver, text_comment) -> None:
     """
 
     Click the "Save & Return" button when typing less than 50 characters
@@ -88,9 +88,9 @@ def prepare_duplicate_button_for_test(driver, text_comment) -> None:
     text_field.send_keys(text_comment)
     number_field = driver.find_element_by_id("Number")
     number_field.clear()
-    save_and_return_button = driver.find_element_by_xpath(
+    button_save_and_return = driver.find_element_by_xpath(
         "//input[@value='Save & Return']")
-    save_and_return_button.click()
+    button_save_and_return.click()
 
 
 def prepare_edit_button_for_test(driver, text_comment) -> None:
@@ -105,19 +105,19 @@ def prepare_edit_button_for_test(driver, text_comment) -> None:
 
     """
 
-    select_comment_for_duplicate = driver.find_element_by_name(
+    select_comment_for_edit = driver.find_element_by_name(
         "SelectedId")
-    select_comment_for_duplicate.click()
-    edit_button = driver.find_element_by_xpath(
+    select_comment_for_edit.click()
+    button_edit = driver.find_element_by_xpath(
         '//*[@id="command-navigation"]/input[%d]'
         % SAVE_N_RETURN_BUTTON_INDEX)
-    edit_button.click()
+    button_edit.click()
     text_field = driver.find_element_by_id("Text")
     text_field.clear()
     text_field.send_keys(text_comment)
-    save_and_return_button = driver.find_element_by_xpath(
+    button_save_and_return = driver.find_element_by_xpath(
         "//input[@value='Save & Return']")
-    save_and_return_button.click()
+    button_save_and_return.click()
     refresh_comments_list = driver.find_element_by_xpath(
         "//*[@id='main']/div/div[%d]/form/table/thead/tr/th[%d]/a"
         % (INDEX_TO_SWITCH_BETWEEN_PAGES, SAVE_N_RETURN_BUTTON_INDEX))

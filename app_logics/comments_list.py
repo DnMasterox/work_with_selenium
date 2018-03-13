@@ -1,7 +1,7 @@
 __author__ = 'nshumakov'
 
 
-class FindInCommentsList(object):
+class CommentsList(object):
     """
     Class to find the required elements on all pages of the site
     """
@@ -9,7 +9,7 @@ class FindInCommentsList(object):
     def __init__(self, web_driver):
         self.__driver = web_driver
 
-    def search_in_list_by_comment(self) -> list:
+    def search_by_comment(self) -> list:
 
         """
         Function-finder the required elements on all pages by entered comment
@@ -34,7 +34,7 @@ class FindInCommentsList(object):
 
         return text_columns
 
-    def search_in_list_by_number(self) -> list:
+    def search_by_number(self) -> list:
 
         """
         Function-finder the required elements on all pages by entered number
